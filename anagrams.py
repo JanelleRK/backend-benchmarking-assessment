@@ -12,7 +12,7 @@ import sys
 
 # Your name here, and any other people/sources who helped.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Janelle Kuhns"
 
 
 def alphabetize(string):
