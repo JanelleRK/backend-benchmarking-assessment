@@ -15,6 +15,10 @@ import sys
 __author__ = "Janelle Kuhns"
 
 
+def alphabetize(string):
+    """Returns alphabetized version of the string"""
+    return "".join(sorted(string.lower()))
+
 
 def find_anagrams(words):
     """
@@ -23,15 +27,13 @@ def find_anagrams(words):
     Example:
     {'dgo': ['dog'], 'act': ['cat', 'act']}
     """
-    def alphabetize(string):
-        """Returns alphabetized version of the string"""
-        return "".join(sorted(string.lower()))
-
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
+    anagrams = {}
+    for w in words:
+        alphabetize_word = alphabetize(w)
+        if alphabetize_word not in anagrams:
+            anagrams[alphabetize_word] = [w]
+        else:
+            anagrams[alphabetize_word].append(w)
     return anagrams
 
 
@@ -46,7 +48,7 @@ def main(args):
     anagram_dict = find_anagrams(words)
     for k, v in anagram_dict.items():
         print("{} : {}".format(k, v))
-        
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
